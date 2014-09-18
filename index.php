@@ -27,8 +27,8 @@ if (!empty($_SERVER['CONTENT_LENGTH'])) {
 if (!empty($_SERVER['SERVER_PROTOCOL'])) {
   $output['http']['protocol'] = $_SERVER['SERVER_PROTOCOL'];
 }
-if (!empty($_SERVER['REMOTE_ADDRESS'])) {
-  $output['http']['ip'] = $_SERVER['REMOTE_ADDRESS'];
+if (!empty($_SERVER['REMOTE_ADDR'])) {
+  $output['http']['ip'] = $_SERVER['REMOTE_ADDR'];
 }
 if (sizeof($_FILES)) {
   $output['data']['files'] = $_FILES;
