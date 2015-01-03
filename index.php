@@ -34,6 +34,7 @@ if (!empty($_SERVER['REMOTE_ADDR'])) {
 if (!empty($_SERVER['PATH_INFO'])) {
   $output['path'] = $_SERVER['PATH_INFO'];
 }
+$output['ssl'] = !empty($_SERVER['HTTPS']) ? true : false;
 if (sizeof($_FILES)) {
   $output['data']['files'] = $_FILES;
 }
