@@ -2,15 +2,16 @@
 header('Content-type: application/json');
 date_default_timezone_set('Europe/Zurich');
 
-function get_http_headers() { 
-  $headers = ''; 
-  foreach ($_SERVER as $name => $value) { 
-    if (substr($name, 0, 5) == 'HTTP_') { 
-      $headers[lcfirst(str_replace(' ', '', ucwords(strtolower(str_replace('_', ' ', substr($name, 5))))))] = $value; 
-    } 
-  } 
-  return $headers; 
-} 
+function get_http_headers() {
+  $headers = '';
+  foreach ($_SERVER as $name => $value) {
+    if (strpos($name, 'HTTP_') !== false && $value !== '') {
+      $name_split = explode('HTTP_', $name);
+      $headers[lcfirst(str_replace(' ', '', ucwords(strtolower(str_replace('_', ' ', end($name_split))))))] = $value;
+    }
+  }
+  return $headers;
+}
 
 $output = array();
 //$output['status'] = $_SERVER['REDIRECT_STATUS'];
