@@ -56,5 +56,10 @@ if (is_object($json)) {
 if (!empty($_SERVER['REQUEST_TIME'])) {
   $output['requestTime'] = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
 }
+
+if ($delay = $_REQUEST['delay']) {
+  sleep((int) $delay);
+}
+
 echo json_encode($output);
 ?>
