@@ -61,5 +61,6 @@ if ($delay = $_REQUEST['delay']) {
   sleep((int) $delay);
 }
 
-echo json_encode($output);
+header('Content-length: '.mb_strlen($json = json_encode($output)));
+echo $json;
 ?>
