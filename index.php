@@ -1,6 +1,7 @@
 <?php
 header('Content-type: application/json');
 date_default_timezone_set('Europe/Zurich');
+error_reporting(0);
 
 function get_http_headers() {
   $headers = [];
