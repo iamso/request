@@ -3,6 +3,8 @@ header('Content-type: application/json');
 date_default_timezone_set('Europe/Zurich');
 error_reporting(0);
 
+define('MAX_DELAY', 10 * 60); // 10min
+
 function get_http_headers() {
   $headers = [];
   foreach ($_SERVER as $name => $value) {
@@ -59,7 +61,7 @@ if (!empty($_SERVER['REQUEST_TIME'])) {
 }
 
 if ($delay = $_REQUEST['delay']) {
-  sleep((int) $delay);
+  sleep((int) min($delay, MAX_DELAY));
 }
 
 header('Content-length: '.mb_strlen($json = json_encode($output)));
